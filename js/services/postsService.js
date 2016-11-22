@@ -1,7 +1,7 @@
 ((app) => {
 
   'use strict'
-  app.service('usersService', function($http) {
+  app.service('postsService', function($http) {
       return {
           get() {
               return $http.get('/../posts.json') // promise

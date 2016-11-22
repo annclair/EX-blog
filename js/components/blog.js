@@ -4,7 +4,7 @@
   app.component('blog',{
     templateUrl : 'js/components/blog.html',
 
-    controller : ['selectedPost' ,function(selectedPost,http) {
+    controller : ['blogService',function(blogService) {
 
         let _previous = {}
         this.startIndex = 0
@@ -14,7 +14,11 @@
         //     this.posts = res.data
         // })
 
-        this.suppression=(post, index) => {
+        blogService.get().then((res) => {
+            this.posts = res.data
+        })
+
+        this.selected=(post, index) => {
           this.selectedPost = post
           this.selectedPost.position = index
         }
@@ -42,7 +46,7 @@
             this.posts[this.selectedPost.position] = _previous[this.selectedPost.position]
             this.selectedPost = null
         }
-
+        
         // gestion des fleches précedent & suivant
         this.next = function(posts){
             this.startIndex += 1;

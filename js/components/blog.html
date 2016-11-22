@@ -6,7 +6,7 @@
         <div ng-repeat="post in $ctrl.posts | limitTo: 3 : $ctrl.startIndex" class="unpost" ng-if="!$ctrl.selectedPost && !$ctrl.newPost" >
             <h2 class="blogH2"> {{post.title}} </h2>
             <p class="blogP"> {{post.content | limitTo:300}} </p>
-            <button type="button" name="button" class="btn btnLearnMore" ng-click="$ctrl.suppression(post, $index)">Learn more -></button>
+            <button type="button" name="button" class="btn btnLearnMore" ng-click="$ctrl.selected(post, $index)">Learn more -></button>
         </div>
 
         <div class="zoomArticle" ng-if="$ctrl.selectedPost">
@@ -16,7 +16,7 @@
             <h3 class="articleH3"> le {{$ctrl.selectedPost.PublishedAt*1000 | date:"dd/MM/yyyy"}} </h3>
             <p class="articleP" ng-if="!$ctrl.selectedPost.editMode"> {{$ctrl.selectedPost.content| limitTo:300}} </p>
             <textarea rows="8" cols="50" ng-if="$ctrl.selectedPost.editMode" type="text" name="title" ng-model="$ctrl.selectedPost.content"></textarea>
-            <button type="button" class="btn " name="button" ng-if="!$ctrl.selectedPost.editMode" ng-click="$ctrl.edit()"> Modifier </button>
+            <button type="button" class="btn " name="button" ng-if="!$ctrl.selectedPost.editMode" ng-click="$ctrl.edit(); $ctrl.selectedPost.editMode = true"> Modifier </button>
             <button type="button" class="btn " name="button" ng-if="$ctrl.selectedPost.editMode" ng-click="$ctrl.selectedPost.editMode = false">Valider</button>
             <button type="button" class="btn " name="button" ng-if="!$ctrl.selectedPost.editMode" ng-click="$ctrl.delete(selectedPost, $index); $ctrl.selectedPost = null"> Supprimer </button>
             <button type="button" class="btn " name="button" ng-if="$ctrl.selectedPost.editMode" ng-click="$ctrl.cancel()">Annuler</button>
