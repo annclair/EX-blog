@@ -37,11 +37,15 @@
             }
 
             // on modifie les posts
-            this.edit = (selectedPost) => {
-
-
-                // AJOUTER DU POSTSSERVICE .... A FAIRE
+            this.edit = () => {
                 _previous[this.selectedPost.position] = angular.copy(this.selectedPost)
+            }
+
+            this.save = () => {
+              postsService.edit(this.selectedPost).then((res) => {
+                  this.posts.push(res.data)
+              })
+
             }
 
             //on annule une modification en cours

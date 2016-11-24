@@ -21,7 +21,7 @@
             <p class="articleP" ng-if="!$ctrl.selectedPost.editMode"> {{$ctrl.selectedPost.content}} </p>
             <textarea rows="8" cols="100" ng-if="$ctrl.selectedPost.editMode" type="text" name="title" ng-model="$ctrl.selectedPost.content" class="editContent"></textarea>
             <button type="button" class="btn btnEdit " name="button" ng-if="!$ctrl.selectedPost.editMode" ng-click="$ctrl.edit(selectedPost) ; $ctrl.selectedPost.editMode = true"> Modifier </button>
-            <button type="button" class="btn btnOk" name="button" ng-if="$ctrl.selectedPost.editMode" ng-click="$ctrl.selectedPost.editMode = false">Valider</button>
+            <button type="button" class="btn btnOk" name="button" ng-if="$ctrl.selectedPost.editMode" ng-click="$ctrl.save() ; $ctrl.selectedPost.editMode = false">Valider</button>
             <button type="button" class="btn " name="button" ng-if="!$ctrl.selectedPost.editMode" ng-click="$ctrl.delete(selectedPost, $index)"> Supprimer </button>
             <button type="button" class="btn " name="button" ng-if="$ctrl.selectedPost.editMode" ng-click="$ctrl.cancel()">Annuler</button>
         </div>
