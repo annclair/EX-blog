@@ -1,58 +1,64 @@
-((app) =>{
-  'use strict'
+((app) => {
+    'use strict'
 
-  app.component('postsBlog',{
-    templateUrl : 'js/components/postsBlog.html',
+    app.component('postsBlog', {
+        templateUrl: 'js/components/postsBlog.html',
 
-    controller : ['postsService',function(postsService) {
+        controller: ['postsService', function(postsService) {
 
-        let _previous = {}
-        this.startIndex = 0
+            let _previous = {}
+            this.startIndex = 0
 
-        postsService.get().then((res) => {
-            this.posts = res.data
-        })
-
-        this.selected=(post, index) => {
-          this.selectedPost = post
-          this.selectedPost.position = index
-        }
-
-        //on ajoute des posts
-        this.add = () => {
-            postsService.add(this.newPost).then((res) => {
-                this.posts.push(res.data)
-                this.newPost = {}
+            postsService.get().then((res) => {
+                this.posts = res.data
             })
-        }
 
-        // on supprime les posts
+            this.selected = (post, index) => {
+                this.selectedPost = post
+                this.selectedPost.position = index
+            }
 
-        this.delete = () => {
-            this.posts.splice(this.selectedPost.position, 1);
-            this.post = null
-        }
+            //on ajoute des posts
+            this.add = () => {
+                postsService.add(this.newPost).then((res) => {
+                    this.posts.push(res.data)
+                    this.newPost = {}
+                    this.newPost = null
+                })
+            }
 
-        // on modifie les posts
-        this.edit = () => {
-            _previous[this.selectedPost.position] = angular.copy(this.selectedPost)
-        }
+            // on supprime les posts
 
-        //on annule une modification en cours
-        this.cancel = () => {
-            this.posts[this.selectedPost.position] = _previous[this.selectedPost.position]
-            this.selectedPost = null
-        }
+            this.delete = () => {
+                postsService.delete(this.selectedPost).then((res) => {
+                    this.posts.splice(this.selectedPost.position, 1);
+                    this.selectedPost = null
+                })
+            }
 
-        // gestion des fleches précedent & suivant
-        this.next = function(posts){
-            this.startIndex += 1;
-        };
+            // on modifie les posts
+            this.edit = (selectedPost) => {
 
-        this.back = function(posts){
-            this.startIndex -= 1;
-        };
-     }]
-  })
+
+                // AJOUTER DU POSTSSERVICE .... A FAIRE
+                _previous[this.selectedPost.position] = angular.copy(this.selectedPost)
+            }
+
+            //on annule une modification en cours
+            this.cancel = () => {
+                this.posts[this.selectedPost.position] = _previous[this.selectedPost.position]
+                this.selectedPost = null
+            }
+
+            // gestion des fleches précedent & suivant
+            this.next = function(posts) {
+                this.startIndex += 1;
+            };
+
+            this.back = function(posts) {
+                this.startIndex -= 1;
+            };
+        }]
+    })
 
 })(angular.module('app.posts'))

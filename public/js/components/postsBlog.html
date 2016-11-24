@@ -1,36 +1,40 @@
 
     <div class="blogEntier">
 
-        <button type="button" class="btn nextprev" name="button" ng-click="$ctrl.back()" ng-if="$ctrl.startIndex > 0 && !$ctrl.selectedPost"> < </button>
+        <button type="button" class="btn nextprev" name="button" ng-click="$ctrl.back()" ng-if="$ctrl.startIndex > 0 && !$ctrl.selectedPost && !$ctrl.newPost"> < </button>
 
         <div ng-repeat="post in $ctrl.posts | limitTo: 3 : $ctrl.startIndex" class="unpost" ng-if="!$ctrl.selectedPost && !$ctrl.newPost" >
-            <h2 class="postH2"> {{post.title}} </h2>
-            <p class="postP"> {{post.content | limitTo:300}} </p>
+            <h2 class="blogH2"> {{post.title}} </h2>
+            <p class="separator"> ---^._.^--- *~ o ~* ---^._.^--- </p>
+            <p class="blogP"> {{post.content | limitTo:300 }} </p>
             <button type="button" name="button" class="btn btnLearnMore" ng-click="$ctrl.selected(post, $index)">Learn more -></button>
         </div>
 
         <div class="zoomArticle" ng-if="$ctrl.selectedPost">
             <button type="button" class="btn btn-close" name="button" ng-click="$ctrl.selectedPost = null"> X </button>
+          <div class="firstRow">
             <h2 class="articleH2" ng-if="!$ctrl.selectedPost.editMode"> {{$ctrl.selectedPost.title}} </h2>
-            <input ng-if="$ctrl.selectedPost.editMode" type="text" name="title" ng-model="$ctrl.selectedPost.title">
-            <h3 class="articleH3"> le {{$ctrl.selectedPost.PublishedAt*1000 | date:"dd/MM/yyyy"}} </h3>
-            <p class="articleP" ng-if="!$ctrl.selectedPost.editMode"> {{$ctrl.selectedPost.content| limitTo:300}} </p>
-            <textarea rows="8" cols="50" ng-if="$ctrl.selectedPost.editMode" type="text" name="title" ng-model="$ctrl.selectedPost.content"></textarea>
-            <button type="button" class="btn " name="button" ng-if="!$ctrl.selectedPost.editMode" ng-click="$ctrl.edit(); $ctrl.selectedPost.editMode = true"> Modifier </button>
-            <button type="button" class="btn " name="button" ng-if="$ctrl.selectedPost.editMode" ng-click="$ctrl.selectedPost.editMode = false">Valider</button>
-            <button type="button" class="btn " name="button" ng-if="!$ctrl.selectedPost.editMode" ng-click="$ctrl.delete(selectedPost, $index); $ctrl.selectedPost = null"> Supprimer </button>
+            <input ng-if="$ctrl.selectedPost.editMode" type="text" name="title" ng-model="$ctrl.selectedPost.title" class="editTitle">
+            <h3 class="articleH3"> publié le {{$ctrl.selectedPost.createdAt | date:"dd/MM/yyyy"}} {{($ctrl.selectedPost.createdAt != $ctrl.selectedPost.updatedAt ? ' et modifié le ' + ctrl.selectedPost.updateAt : null) | date:"dd/MM/yyyy"}} par {{$ctrl.selectedPost.author}}</h3>
+            <!-- <input ng-if="$ctrl.selectedPost.editMode" type="text" name="author" ng-model="$ctrl.selectedPost.author" class="editAuthor"> -->
+          </div>
+            <p class="articleP" ng-if="!$ctrl.selectedPost.editMode"> {{$ctrl.selectedPost.content}} </p>
+            <textarea rows="8" cols="100" ng-if="$ctrl.selectedPost.editMode" type="text" name="title" ng-model="$ctrl.selectedPost.content" class="editContent"></textarea>
+            <button type="button" class="btn btnEdit " name="button" ng-if="!$ctrl.selectedPost.editMode" ng-click="$ctrl.edit(selectedPost) ; $ctrl.selectedPost.editMode = true"> Modifier </button>
+            <button type="button" class="btn btnOk" name="button" ng-if="$ctrl.selectedPost.editMode" ng-click="$ctrl.selectedPost.editMode = false">Valider</button>
+            <button type="button" class="btn " name="button" ng-if="!$ctrl.selectedPost.editMode" ng-click="$ctrl.delete(selectedPost, $index)"> Supprimer </button>
             <button type="button" class="btn " name="button" ng-if="$ctrl.selectedPost.editMode" ng-click="$ctrl.cancel()">Annuler</button>
         </div>
 
         <div class="newArticle" ng-if="$ctrl.newPost">
             <button type="button" class="btn btn-close" name="button" ng-click="$ctrl.newPost = null"> X </button>
-            <input type="text" placeholder="Titre de l'article" name="title" ng-model="$ctrl.newPost.title">
-            <input type="text" placeholder="Nom de l'auteur" name="author" ng-model="post.author">
-            <textarea rows="10" cols="100" type="text" placeholder="Contenu de l'article" name="content" ng-model="$ctrl.newPost.content"> </textarea>
-            <button type="button" class="btn " name="button" ng-click="$ctrl.add(); $ctrl.newPost = null"> Valider </button>
+            <input type="text" placeholder="Titre de l'article" name="title" ng-model="$ctrl.newPost.title" class="newTitle">
+            <input type="text" placeholder="Nom de l'auteur" name="author" ng-model="$ctrl.newPost.author" class="newAuthor">
+            <textarea rows="10" cols="100" type="text" placeholder="Contenu de l'article" name="content" ng-model="$ctrl.newPost.content" class="newContent"> </textarea>
+            <button type="button" class="btn btnOk" name="button" ng-click="$ctrl.add()"> Valider </button>
         </div>
 
-        <button type="button" class="btn nextprev" name="button" ng-click="$ctrl.next()" ng-if="$ctrl.startIndex < $ctrl.posts.length-3 && !$ctrl.selectedPost"> > </button>
+        <button type="button" class="btn nextprev" name="button" ng-click="$ctrl.next()" ng-if="$ctrl.startIndex < $ctrl.posts.length-3 && !$ctrl.selectedPost && !$ctrl.newPost"> > </button>
 
     </div>
     <button type="button" name="button" ng-click="($ctrl.newPost = {})" class="btn btnAddPost" ng-if="!$ctrl.selectedPost"> + Add article </button>

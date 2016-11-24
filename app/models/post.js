@@ -6,16 +6,19 @@ let mongoose = require('mongoose')
 let postModel = mongoose.model('Post', new mongoose.Schema({
     title : {
         type: String,
-        unique: true
+        unique : true,
+        required: true
     },
     author: {
-        type: String
+        type: String,
+        required: true
     },
-    PublishedAt: {
-        type: Number
-    },
+    // PublishedAt: {
+    //     type: Number
+    // },
     content: {
-        type: String
+        type: String,
+        required: true
     }
 }, {
     timestamps: true
