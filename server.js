@@ -9,7 +9,7 @@ let methodOverride = require('method-override')
 let morgan = require('morgan')
 let cors = require('cors')
 let routes = require('./app/routes')
-const ENV = require('./config/env.js')
+const ENV = require('./config/env')
 const port = process.env.PORT || 8004
 
 // Indication du dossier de notre application Angular
@@ -47,7 +47,7 @@ process.on('SIGINT', function() {
 
 // Connexion à mongodb via mongoose
 let mongoose = require('mongoose')
-mongoose.connect(ENV.db); // mettre lien fichier env.js ???
+mongoose.connect(ENV.db); // mettre lien fichier env.js
 // mongoose.connect('mongodb://localhost:27017/blogBD');
 
 // Création d'un middleware pour logger les erreurs - se refere aux next (err) plus haut en cas d'erreur, elles vont venir catégoriser les erreurs.
