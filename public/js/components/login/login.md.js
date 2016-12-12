@@ -6,4 +6,4 @@
             template : '<login></login>'
         })
     }])
-})(angular.module('app.login', ['ui-router']))
+})(angular.module('app.login', []))

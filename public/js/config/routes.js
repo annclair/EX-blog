@@ -6,7 +6,7 @@
         $stateProvider.state('app', {
             url: '',
             abstract: true,
-            template: '<ui-view />'
+            template: '<ui-view></ui-view>'
         })
     }])
 })(angular.module('app.config'))

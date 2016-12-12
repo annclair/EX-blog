@@ -15,7 +15,7 @@ const port = process.env.PORT || 8004
 // Indication du dossier de notre application Angular
 app.use(express.static(__dirname + '/public'))
 // Configuration des logs
-app.use(morgan('combined')) /
+app.use(morgan('combined'))
 // Configuration du parser pour récupérer les infos des requêtes -- Config par defaut
 app.use(bodyParser.urlencoded({
     'extended': 'true'
