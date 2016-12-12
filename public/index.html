@@ -15,15 +15,25 @@
 
     <div class="blocPage">
         <h1> Blog</h1>
-          <posts-blog/>
+        <!-- ui-view contains the nested views needed by ui-router -->
+
+        <ui-view></ui-view>
     </div>
 
 </body>
 
 <script src="libs/angular.min.js"></script>
 
+<script src="libs/angular-ui-router.js"></script>
+
+<script type="text/javascript" src="js/config/config.md.js"></script>
+<script type="text/javascript" src="js/config/routes.js"></script>
+
 <script type="text/javascript" src="js/components/postsBlog.md.js"></script>
 <script type="text/javascript" src="js/components/postsBlog.js"></script>
+
+<script type="text/javascript" src="js/components/login.md.js"></script>
+<script type="text/javascript" src="js/components/login.js"></script>
 
 <script src="js/services/services.md.js"></script>
 <script src="js/services/postsService.js"></script>
