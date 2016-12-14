@@ -8,12 +8,9 @@ module.exports = () => {
         if (error)
             throw error
         else
-            files.forEach((file) => { 
-                // remove the file extension
-                let route = file.substr(0, file.lastIndexOf('.'))
-                    // do not require index.js (this file)
+            files.forEach((file) => {
+                let route = file.substr(0, file.lastIndexOf('.'));
                 if (route !== 'index') {
-                    // require the controller
                     require('./' + route)(ROUTER)
                 }
             })

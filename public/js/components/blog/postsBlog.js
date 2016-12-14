@@ -2,10 +2,11 @@
     'use strict'
 
     app.component('postsBlog', {
-        templateUrl: 'js/components/postsBlog/postsBlog.html',
+        templateUrl: 'js/components/blog/postsBlog.html',
 
-        controller: ['postsService', function(postsService) {
+        controller: ['postsService', 'usersService', function(postsService, usersService) {
 
+            this.user = usersService.currentUser
             let _previous = {}
             this.startIndex = 0
 

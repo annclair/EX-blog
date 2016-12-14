@@ -8,5 +8,9 @@
             abstract: true,
             template: '<ui-view></ui-view>'
         })
+        .state('app.blog', {
+            url: '/',
+            template: '<posts-blog></posts-blog>'
+})
     }])
 })(angular.module('app.config'))
