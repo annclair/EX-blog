@@ -1,22 +1,18 @@
 <section>
     <h1> page de connexion </h1>
 
-    <form name="connectForm">
-        <div class="form-group input-group">
-            <!-- <span class="input-group-addon">
-                  <i class="fa fa-user"></i>
-              </span> -->
+    <form name="connectForm" class="connectForm">
+        <div class="connectInput">
+            <span> <i class="fa fa-user"></i> </span>
             <input name="identifiant" type="text" class="form-control" placeholder="Identifiant" id="id_blog" ng-model="$ctrl.user.email" />
         </div>
 
-        <div class="form-group input-group">
-            <!-- <span class="input-group-addon">
-                <i class="fa fa-lock"></i>
-            </span> -->
+        <div class="connectInput">
+            <span> <i class="fa fa-lock"></i> </span>
             <input name="password" type="password" class="form-control" placeholder="Mot de passe" id="pw_blog" ng-model="$ctrl.user.password" />
         </div>
 
-        <button class="btn" ng-click="$ctrl.connect()">Connect</button>
+        <button class="btn btnConnectValidate" ng-click="$ctrl.connect()">Connect</button>
 
     </form>
 

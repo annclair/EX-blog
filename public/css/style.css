@@ -111,37 +111,68 @@ textarea{
 
 
 
-      /* Bouttons */
+/* Bouttons */
 
 .btn{
-  color: #739de3;
-  border : none;
-  background-color: transparent;
-  font-size: 1em;
+    color: #739de3;
+    border : none;
+    background-color: transparent;
+    /*font-size: 1em;*/
+}
+
+.btnFa{
+    position: fixed;
+    padding: 10px;
+    z-index: 99999999;
 }
 
 .btnLearnMore{
-  margin: 8% 0 1% 35%;
+    margin: 8% 0 1% 35%;
 }
 
 .btn-close{
-  float : right;
-  font-size: 2em;
-  font-weight: bold;
+    float : right;
+    /*font-size: 2em;*/
+    /*font-weight: bold;*/
 }
 
-.btnAddPost{
-  font-weight: bold;
-  font-size: 1.6em;
-  margin : 5% 0 5% 45%;
+.btnAdd, .btnConnect{
+    margin : 5% 0 5% 45%;
+    top: 20px;
+    right: 80px;
 }
 
-.btnOk, .btnEdit{
+.btnEdit, .btnOk{
+    top: 80px;
+    right: 80px;
+}
+
+.btnCancel, .btnDelete {
+    top: 80px;
+    right: 180px;
+}
+
+/*.btnOk, .btnEdit{
 margin-left : 45%;
-}
+}*/
 
 .nextprev{
-  width : 40px;
-  font-weight: bold;
-  font-size: 1.2em;
+    width : 40px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/*Formulaire de connexion*/
+
+.connectForm{
+    margin-left : 43%;
+}
+
+.connectInput{
+    margin-top : 5%;
+}
+
+.btnConnectValidate{
+    font-size: 1.6em;
+    margin : 5% 0 25% 5%;*/
 }
