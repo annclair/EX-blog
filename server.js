@@ -47,7 +47,9 @@ process.on('SIGINT', function() {
 
 // Connexion à mongodb via mongoose
 let mongoose = require('mongoose')
-mongoose.connect(ENV.db); // mettre lien fichier env.js
+mongoose.connect(ENV.db, {
+    useMongoClient: true
+}); // mettre lien fichier env.js
 // mongoose.connect('mongodb://localhost:27017/blogBD');
 
 // Création d'un middleware pour logger les erreurs - se refere aux next (err) plus haut en cas d'erreur, elles vont venir catégoriser les erreurs.
