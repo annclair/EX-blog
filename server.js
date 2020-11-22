@@ -16,10 +16,10 @@ const port = process.env.PORT || 8004
 app.use(express.static(__dirname + '/public'))
 // Configuration des logs
 app.use(morgan('combined')) /
-// Configuration du parser pour récupérer les infos des requêtes -- Config par defaut
-app.use(bodyParser.urlencoded({
-    'extended': 'true'
-}))
+    // Configuration du parser pour récupérer les infos des requêtes -- Config par defaut
+    app.use(bodyParser.urlencoded({
+        'extended': 'true'
+    }))
 app.use(bodyParser.json())
 app.use(bodyParser.json({
     type: 'application/vnd.api+json'
@@ -40,7 +40,7 @@ server.listen(port)
 console.log(`server listening on port ${port}`)
 
 //Méthode pour quitter "proprement" l'application -- intersepte le ctrlC pour bien couper le server (& les taches de fond)
-process.on('SIGINT', function() {
+process.on('SIGINT', function () {
     console.log("\nStopping...")
     process.exit()
 });
@@ -48,7 +48,8 @@ process.on('SIGINT', function() {
 // Connexion à mongodb via mongoose
 let mongoose = require('mongoose')
 mongoose.connect(ENV.db, {
-    useMongoClient: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 }); // mettre lien fichier env.js
 // mongoose.connect('mongodb://localhost:27017/blogBD');
 
