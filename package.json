@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "exercice réalisation d'un blog - A.Claire",
   "main": "index.js",
+  "engines": {
+    "node": "10..16.1"
+  },
   "dependencies": {
     "body-parser": "^1.15.2",
     "cors": "^2.8.1",
